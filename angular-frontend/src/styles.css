@@ -1,3 +1,12 @@
+/* 1. Importación de la fuente (Debe ir arriba del todo) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* 2. Directivas de Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 3. Estilos globales */
+body {
+  @apply font-sans bg-slate-50 text-slate-900;
+}
