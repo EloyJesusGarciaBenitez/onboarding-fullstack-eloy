@@ -1,0 +1,15 @@
+<div class="max-w-6xl mx-auto p-6">
+  <h1 class="text-3xl font-black text-slate-800 mb-8 text-center">Gestor de Tareas</h1>
+  
+  <app-task-form (submitted)="onTaskSubmitted($event)"></app-task-form>
+  
+  <div class="my-10 border-t border-slate-100"></div>
+
+  <app-task-filters (filterChanged)="onFiltersApply($event)"></app-task-filters>
+  
+  <app-task-list></app-task-list>
+
+  <div class="mt-12 text-center">
+    <a routerLink="/" class="text-blue-600 hover:underline text-sm">← Volver al Inicio</a>
+  </div>
+</div>

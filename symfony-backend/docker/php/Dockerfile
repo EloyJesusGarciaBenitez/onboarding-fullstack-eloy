@@ -27,7 +27,7 @@ ENV SYMFONY_PARAMS_STD="MockApp"
 
 RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash && apt install -y symfony-cli
 
-WORKDIR /usr/src
+WORKDIR /var/www/app
 VOLUME /usr/src
 
 COPY ./docker/php/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh

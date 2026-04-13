@@ -1,0 +1,39 @@
+<div class="bg-white p-6 rounded-xl shadow-md border border-gray-200 mb-8">
+  <h2 class="text-xl font-bold mb-4 text-blue-600">Añadir Nueva Tarea</h2>
+  
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Título *</label>
+      <input type="text" formControlName="titulo" 
+             class="mt-1 block w-full border rounded-md p-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+      <p *ngIf="form.get('titulo')?.invalid && form.get('titulo')?.touched" class="text-red-500 text-xs mt-1">
+        Mínimo 3 caracteres.
+      </p>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700">Descripción</label>
+      <textarea formControlName="descripcion" rows="2" class="mt-1 block w-full border rounded-md p-2 border-gray-300"></textarea>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Estado</label>
+        <select formControlName="estado" class="mt-1 block w-full border rounded-md p-2 border-gray-300">
+          <option value="pendiente">Pendiente</option>
+          <option value="en progreso">En progreso</option>
+          <option value="completada">Completada</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Fecha Límite</label>
+        <input type="date" formControlName="fechaLimite" class="mt-1 block w-full border rounded-md p-2 border-gray-300">
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid"
+            class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:bg-gray-300 transition-colors font-bold">
+      Guardar Tarea
+    </button>
+  </form>
+</div>

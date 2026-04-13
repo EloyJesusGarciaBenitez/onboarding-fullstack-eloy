@@ -1,0 +1,35 @@
+<div class="mt-8">
+  @if (loading$ | async) {
+    <div class="flex justify-center p-10">
+      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+    </div>
+  } @else {
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      @for (t of (tasks$ | async); track t.id) {
+        <div class="relative p-6 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition-all">
+          
+          <!-- BOTÓN DE BORRAR -->
+          <button 
+            (click)="borrarTarea(t.id)" 
+            class="absolute top-2 right-2 bg-red-100 text-red-600 px-3 py-1 rounded-md text-xs font-bold hover:bg-red-600 hover:text-white transition-colors">
+            BORRAR
+          </button>
+          
+          <h3 class="text-lg font-bold text-gray-800 pr-16">{{ t.titulo }}</h3>
+          <p class="text-sm text-gray-600 mt-2">{{ t.descripcion }}</p>
+          
+          <div class="mt-4 flex items-center justify-between">
+            <span class="px-2 py-1 rounded-md text-[10px] font-black uppercase bg-blue-100 text-blue-700">
+              {{ t.estado }}
+            </span>
+            <span class="text-xs text-gray-400">{{ t.fechaLimite | date:'dd/MM/yyyy' }}</span>
+          </div>
+        </div>
+      } @empty {
+        <div class="col-span-full text-center py-10">
+          <p class="text-gray-400">No hay tareas pendientes</p>
+        </div>
+      }
+    </div>
+  }
+</div>
